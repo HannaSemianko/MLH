@@ -1,5 +1,5 @@
 import sel from '../../data/selectors';
-import exp from '../../data/expected.json';
+import {name, age, gender, story} from '../../data/testData';
 
 describe('Required fields and story created', function () {
 
@@ -9,11 +9,11 @@ describe('Required fields and story created', function () {
 
 
     it('TC-026 Submit button is enable after fields 1 -4 are filled in with valid values', function () {
-        $(sel.name).setValue("LadyBug007");
-        $$(sel.radioButtons)[1].click();
-        $(sel.age).setValue('1234567890');
+        $(sel.name).setValue(name.default);
+        $$(sel.radioButtons)[gender.she].click();
+        $(sel.age).setValue(age.default);
         $(sel.storyType).click();
-        $$(sel.storyList)[6].click();
+        $$(sel.storyList)[story.comedy].click();
         let submitButton = $(sel.submitButton).isEnabled();
         expect(submitButton).toEqual(true);
     });
