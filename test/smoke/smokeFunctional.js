@@ -1,5 +1,6 @@
 import sel from '../../data/selectors';
 import {name, age, gender, story} from '../../data/testData';
+import inputValues4 from '../../helpers/methods';
 
 describe('Required fields and story created', function () {
 
@@ -20,11 +21,7 @@ describe('Required fields and story created', function () {
 
     it('TC-027 User can create a story with valid values', function () {
         browser.refresh();
-        $(sel.name).setValue("LadyBug007");
-        $$(sel.radioButtons)[1].click();
-        $(sel.age).setValue('1234567890');
-        $(sel.storyType).click();
-        $$(sel.storyList)[6].click();
+        inputValues4(name.default, gender.she, age.default, story.comedy);
         $(sel.submitButton).click();
         browser.pause(2000);
         let tryAgainButton = $(sel.tryAgainButton).isDisplayed();
